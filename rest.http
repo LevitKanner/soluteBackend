@@ -1,0 +1,54 @@
+### Get a list of all registered companies
+GET http://localhost:3000/company
+
+### Get a single company by ID
+GET http://localhost:3000/company/id
+
+### Update a company using ID
+PATCH http://localhost:3000/company/id
+Content-Type: application/json
+
+{}
+
+### Register a new company
+POST http://localhost:3000/company/register
+Content-Type: application/json
+
+{
+  "name": "Levit",
+  "email": "password@gmail.com",
+  "password": "password",
+  "telephone": "024387940"
+}
+
+### Delete a single company using ID
+DELETE http://localhost:3000/company/601ae83b33fc320f04d049f0
+
+
+
+### Get a list of all registered users
+GET http://localhost:3000/user
+
+### Get a single user by ID
+GET http://localhost:3000/user/id
+
+### Update a user using ID
+PATCH http://localhost:3000/user/id
+Content-Type: application/json
+
+{}
+
+### Register a new user
+POST http://localhost:3000/user/register
+Content-Type: application/json
+
+{
+  "name": "Levit",
+  "email": "password@gmail.com",
+  "password": "password",
+  "telephone": "024387940"
+}
+
+### Hit unknown endpoint
+GET http://localhost:3000/unknown
+
