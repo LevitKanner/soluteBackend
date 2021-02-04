@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const { VacancySchema } = require('./Vacancy')
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -25,8 +27,8 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         enum: [1, 2, 3],
         required: true
-    }
-    // applications: [require('./Vacancy')]
+    },
+    applications: [VacancySchema]
 })
 
 module.exports = mongoose.model('user', UserSchema)
