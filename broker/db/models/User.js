@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { VacancySchema } = require('./Vacancy')
+const autopopulate = require('mongoose-autopopulate')
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -28,7 +28,11 @@ const UserSchema = new mongoose.Schema({
         enum: [1, 2, 3],
         required: true
     },
-    applications: [VacancySchema]
+    applications: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'vacancy',
+        autopopulate: true
+    }]
 })
 
 module.exports = mongoose.model('user', UserSchema)
