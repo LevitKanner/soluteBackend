@@ -29,7 +29,14 @@ const VacancySchema = new mongoose.Schema({
         type: String,
         enum: ['active', 'inactive'],
         default: 'active'
-    }
+    },
+    applicants: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user',
+            autopopulate: true
+        }
+    ]
 })
 
 VacancySchema.plugin(autopopulate)
