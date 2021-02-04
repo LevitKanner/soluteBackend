@@ -53,3 +53,11 @@ module.exports.allUsers = async () => {
         throw new Error(error.mongoError)
     }
 }
+
+module.exports.updateUser = async (id, args) => {
+    try {
+        return await User.findByIdAndUpdate(id, args, {new: true})
+    } catch (e){
+        throw new Error(errors.mongoError)
+    }
+}

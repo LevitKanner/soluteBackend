@@ -27,26 +27,38 @@ Content-Type: application/json
 DELETE http://localhost:3000/company/601ae9d83701060f6904741b
 
 ### Get a list of all registered users
-GET http://localhost:3000/user
+GET http://localhost:3000/users
 
 ### Get a single user by ID
-GET http://localhost:3000/user/id
+GET http://localhost:3000/users/601bfbef81adda3812712f30
 
 ### Update a user using ID
-PATCH http://localhost:3000/user/id
-Content-Type: application/json
-
-{}
-
-### Register a new user
-POST http://localhost:3000/user/register
+PATCH http://localhost:3000/users/601bfbef81adda3812712f30
 Content-Type: application/json
 
 {
-  "name": "Levit",
-  "email": "password@gmail.com",
+ 
+}
+
+### Register a new user
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+  "name": "Ernest Gaisie",
+  "email": "ernest@gmail.com",
   "password": "password",
-  "telephone": "024387940"
+  "phone": "05534324",
+  "experience": 2
+}
+
+### Login user
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "email": "ernest@gmail.com",
+  "password": "password"
 }
 
 ### Hit unknown endpoint
