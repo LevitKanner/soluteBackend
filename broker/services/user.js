@@ -1,16 +1,19 @@
 const User = require('../db/models/User')
+const {errors} = require('../utils')
 
 module.exports.login = async ({email, password}) => {
     const user = await User.findOne({email})
-    if (!user) throw new Error('email not registered')
+    if (!user) throw new Error(errors.emailInvalid)
     const isValid = await _broker.utils.validatePasswordHash(password, user.password)
 
-    if (!isValid) throw new Error('password incorrect')
+    if (!isValid) throw new Error(errors.passwordInvalid)
     return {
         status: 'success',
         message: 'login successful',
         payload: {
-            ...user
+            user: {
+                ...user.toObject() 
+            }
         }
     }
 }
@@ -18,7 +21,7 @@ module.exports.login = async ({email, password}) => {
 
 module.exports.register = async ({name, email, password, phone, experience}) => {
     const user = await User.findOne({email})
-    if (user) throw new Error('email already exist')
+    if (user) throw new Error(errors.duplicateEmail)
     const hashedPassword = await _broker.utils.hashPassword(password)
     const newUser = new User({
         name,
@@ -30,7 +33,8 @@ module.exports.register = async ({name, email, password, phone, experience}) => 
     try {
         return await newUser.save()
     } catch (e) {
-        throw new Error(e.message)
+        console.error(e)
+        throw new Error(errors.mongoError)
     }
 }
 
@@ -38,6 +42,14 @@ module.exports.getUserDetails = async ({id}) => {
     try {
         return await User.findById(id)
     } catch (e) {
-        throw new Error(e.message)
+        throw new Error(errors.mongoError)
+    }
+}
+
+module.exports.allUsers = async () => {
+    try {
+        return await User.find({})
+    } catch (e) {
+        throw new Error(error.mongoError)
     }
 }
