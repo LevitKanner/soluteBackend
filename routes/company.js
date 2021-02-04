@@ -4,6 +4,7 @@ const registerCompany = require('../controller/company/register')
 const deleteCompany = require('../controller/company/delete')
 const getAllCompanies = require('../controller/company/allCompanies')
 const getCompanyDetails = require('../controller/company/company-details')
+const updateCompany = require('../controller/company/updateCompany')
 
 
 router.get('/', getAllCompanies)
@@ -14,9 +15,7 @@ router.get('/:id', getCompanyDetails)
 
 router.delete('/:id', deleteCompany)
 
-router.patch("/:id", (req, res, next) => {
-    res.send('Update company with id')
-})
+router.patch("/:id", updateCompany)
 
 
 module.exports = router

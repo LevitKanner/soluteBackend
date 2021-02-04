@@ -1,4 +1,4 @@
-module.exports = async (req, res, next) {
+module.exports = async (req, res, next) => {
     try{
         const company = await _broker.companyService.login(req.body)
         res.send(company)

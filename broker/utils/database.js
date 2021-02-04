@@ -6,6 +6,7 @@ module.exports = async () => {
             useUnifiedTopology: true,
             useNewUrlParser: true,
             useCreateIndex: true,
+            useFindAndModify: false
         })
         console.log(`Database connected to ${connection.connection.db.databaseName} on port ${connection.connection.port}`)
     } catch (e) {

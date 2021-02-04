@@ -4,6 +4,6 @@ module.exports = async (req, res, next) => {
        const company = await _broker.companyService.getCompanyDetails({id}) 
        res.send(company)
     } catch (e) {
-        _broker.errorHandler(e, next)
+        _broker.utils.errorHandler(e, next)
     }
 }
