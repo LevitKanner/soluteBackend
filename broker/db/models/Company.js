@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { VacancySchema } = require('./Vacancy')
 
 const CompanySchema = new mongoose.Schema({
     name: {
@@ -22,7 +23,8 @@ const CompanySchema = new mongoose.Schema({
     },
     description: {
         type: String
-    }
+    },
+    vacancies: [VacancySchema]
 })
 
 module.exports = mongoose.model('company', CompanySchema)
