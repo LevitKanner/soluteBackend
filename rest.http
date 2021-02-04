@@ -2,10 +2,10 @@
 GET http://localhost:3000/company
 
 ### Get a single company by ID
-GET http://localhost:3000/company/id
+GET http://localhost:3000/company/601b75ed5decff03f2aa52af
 
 ### Update a company using ID
-PATCH http://localhost:3000/company/id
+PATCH http://localhost:3000/company/601ae9d83701060f6904741b
 Content-Type: application/json
 
 {}
@@ -15,16 +15,14 @@ POST http://localhost:3000/company/register
 Content-Type: application/json
 
 {
-  "name": "Levit",
-  "email": "password@gmail.com",
-  "password": "password",
-  "telephone": "024387940"
+  "name": "solute",
+  "email": "solute@gmail.com",
+  "password": "pass1",
+  "telephone": "024355789"
 }
 
 ### Delete a single company using ID
 DELETE http://localhost:3000/company/601ae83b33fc320f04d049f0
-
-
 
 ### Get a list of all registered users
 GET http://localhost:3000/user

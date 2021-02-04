@@ -36,9 +36,9 @@ module.exports.login = async ({email, password}) => {
     }
 }
 
-module.exports.getCompanyDetails = async ({email}) => {
+module.exports.getCompanyDetails = async ({id}) => {
     try {
-        return await Company.findOne({email})
+        return await Company.findById(id)
     } catch (e) {
         throw new Error(e.message)
     }
@@ -49,5 +49,14 @@ module.exports.deleteCompany = async ({id}) => {
         return await Company.findByIdAndDelete(id)
     } catch (e) {
         throw new Error(e.message)
+    }
+}
+
+
+module.exports.allCompanies = async () => {
+    try {
+        return await Company.find()
+    } catch (e) {
+        throw e
     }
 }
