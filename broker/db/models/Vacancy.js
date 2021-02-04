@@ -8,7 +8,7 @@ const VacancySchema = new mongoose.Schema({
     },
     company: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Company',
+        ref: 'company',
         required: true,
         autopopulate: true
     },
@@ -33,4 +33,6 @@ const VacancySchema = new mongoose.Schema({
 })
 
 VacancySchema.plugin(autopopulate)
-module.exports = mongoose.model('vacancy', VacancySchema)
+
+module.exports.Vacancy = mongoose.model('vacancy', VacancySchema)
+module.exports.VacancySchema = VacancySchema
