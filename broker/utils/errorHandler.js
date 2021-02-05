@@ -5,7 +5,9 @@ const error = require('./errors')
 const errorHandler = (err, next) => {
     if (err.message === error.mongoError )  return next(createError(404, err.message))
 
-    if (err.name === 'ValidationError') return next(createError(422, 'Validation Error'))
+    if (err.name === 'ValidationError') return next(createError(422, err.message))
+
+    if (err.name === 'ConflictError') return next(createError(400, err.message))
 
     if (err.message === error.passwordInvalid) return next(createError(422, err.message))
 

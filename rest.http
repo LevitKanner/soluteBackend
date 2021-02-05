@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
   "name": "Node JS is lit",
-  "email": "trye@gmail.com",
+  "email": "ttrye@gmail.com",
   "password":"pass123y",
   "phone": "0554345678"
 }
