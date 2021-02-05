@@ -1,6 +1,7 @@
 module.exports = async (req, res, next) => {
     try {
-        const user = await _broker.userService.register(req.body)
+        const result = await _broker.validation.user.register.validateAsync(req.body)
+        const user = await _broker.userService.register(result)
         res.send(user)
     } catch (e) {
         _broker.utils.errorHandler(e, next)
