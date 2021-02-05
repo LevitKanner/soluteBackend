@@ -34,7 +34,9 @@ module.exports.login = async ({email, password}) => {
         status: 'success',
         message: 'Login successful',
         payload: {
-            ...company
+            user: {
+                ...company.toObject()
+            }
         }
     }
 }
