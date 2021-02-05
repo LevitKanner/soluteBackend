@@ -18,13 +18,13 @@ Content-Type: application/json
 
 {
   "name": "Node JS is lit",
-  "email": "node@gmail.com",
-  "password":"pass123",
-  "telephone": "1234567890"
+  "email": "trye@gmail.com",
+  "password":"pass123y",
+  "phone": "0554345678"
 }
 
 ### Delete a single company using ID
-DELETE http://localhost:3000/company/601ae9d83701060f6904741b
+DELETE http://localhost:3000/company/601be7f18e17b1230218261c
 
 ### Get a list of all registered users
 GET http://localhost:3000/users

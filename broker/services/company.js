@@ -1,31 +1,34 @@
+const createError = require('http-errors')
+
 const Company = require('../db/models/Company')
 const { hashPassword, validatePasswordHash, errors} = require('../utils')
 
+
 //Register a Company
-module.exports.register = async ({name, email, password, telephone}) => {
+module.exports.register = async ({name, email, password, phone}) => {
     const company = await Company.findOne({email})
-    if (company) throw new Error('email already exist')
+    if (company) throw createError.Conflict(`${email} already exist`)
 
     const hashedPassword = await hashPassword(password)
     const newCompany = new Company({
         name,
         email,
         password: hashedPassword,
-        telephone
+        phone
     })
     try {
         return await newCompany.save()
     } catch (e) {
-        throw new Error(errors.mongoError)
+        throw e
     }
 }
 
 module.exports.login = async ({email, password}) => {
     const company = await Company.findOne({email})
-    if (!company) throw new Error("email not registered")
+    if (!company) throw createError.BadRequest(`${email} not registered`)
 
     const isValid = await validatePasswordHash(password, company.password)
-    if (!isValid) throw new Error('password incorrect')
+    if (!isValid) throw createError.BadRequest(`${password} incorrect`)
 
     return {
         status: 'success',

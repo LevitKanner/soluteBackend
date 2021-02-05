@@ -1,5 +1,7 @@
 const express = require('express')
+const validator = require('express-joi-validation').createValidator({})
 const router = express.Router()
+
 const registerCompany = require('../controller/company/register')
 const deleteCompany = require('../controller/company/delete')
 const getAllCompanies = require('../controller/company/allCompanies')
