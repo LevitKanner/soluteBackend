@@ -8,6 +8,8 @@ const CompanySchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        lowercase: true,
+        unique: true,
         require: true
     },
     password: {

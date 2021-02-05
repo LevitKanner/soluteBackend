@@ -1,7 +1,7 @@
 const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const createError = require('http-errors')
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
@@ -24,9 +24,7 @@ app.use('/users', usersRouter);
 app.use('/company', companyRouter)
 
 app.use((req, res, next) => {
-    const error = new Error("not found")
-    error.status = 404
-    next(error)
+    next(createError.NotFound())
 })
 
 app.use((err, req, res, next) => {
