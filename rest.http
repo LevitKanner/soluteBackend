@@ -23,6 +23,15 @@ Content-Type: application/json
   "phone": "0554345678"
 }
 
+### Login as a company
+POST http://localhost:3000/company/login
+Content-Type: application/json
+
+{
+  "email": "TTrye@gmail.com",
+  "password":"pass123y"
+}
+
 ### Delete a single company using ID
 DELETE http://localhost:3000/company/601be7f18e17b1230218261c
 
