@@ -1,12 +1,13 @@
+const createError = require('http-errors')
 const User = require('../db/models/User')
-const {errors} = require('../utils')
+
 
 module.exports.login = async ({email, password}) => {
     const user = await User.findOne({email})
-    if (!user) throw new Error(errors.emailInvalid)
+    if (!user) throw createError.Unauthorized('email/password invalid')
     const isValid = await _broker.utils.validatePasswordHash(password, user.password)
 
-    if (!isValid) throw new Error(errors.passwordInvalid)
+    if (!isValid) throw createError.Unauthorized('email/password invalid')
     return {
         status: 'success',
         message: 'login successful',
@@ -20,21 +21,21 @@ module.exports.login = async ({email, password}) => {
 
 
 module.exports.register = async ({name, email, password, phone, experience}) => {
-    const user = await User.findOne({email})
-    if (user) throw new Error(errors.duplicateEmail)
-    const hashedPassword = await _broker.utils.hashPassword(password)
+    const user = await User.findOne({
+        $or: [{ email }, { phone }]
+    })
+    if (user) throw createError.Conflict('email/phone already exists')
     const newUser = new User({
         name,
         email,
-        password: hashedPassword,
+        password,
         phone,
         experience
     })
     try {
         return await newUser.save()
     } catch (e) {
-        console.error(e)
-        throw new Error(errors.mongoError)
+        throw e
     }
 }
 
@@ -42,7 +43,7 @@ module.exports.getUserDetails = async ({id}) => {
     try {
         return await User.findById(id)
     } catch (e) {
-        throw new Error(errors.mongoError)
+        throw e
     }
 }
 
@@ -50,7 +51,7 @@ module.exports.allUsers = async () => {
     try {
         return await User.find({})
     } catch (e) {
-        throw new Error(error.mongoError)
+        throw e
     }
 }
 
@@ -58,6 +59,6 @@ module.exports.updateUser = async (id, args) => {
     try {
         return await User.findByIdAndUpdate(id, args, {new: true})
     } catch (e){
-        throw new Error(errors.mongoError)
+        throw e
     }
 }
