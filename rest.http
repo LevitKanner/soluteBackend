@@ -17,10 +17,10 @@ POST http://localhost:3000/company/register
 Content-Type: application/json
 
 {
-  "name": "Node JS is lit",
-  "email": "ttrye@gmail.com",
-  "password":"pass123y",
-  "phone": "0554345678"
+  "name": "tye",
+  "email": "again@gmail.com",
+  "password":"main12335",
+  "phone": "0244567438"
 }
 
 ### Login as a company
@@ -54,10 +54,10 @@ POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-  "name": "Ernest Gaisie",
-  "email": "ernest@gmail.com",
-  "password": "password",
-  "phone": "05534324",
+  "name": "Ernest Kanner",
+  "email": "lkanner@gmail.com",
+  "password": "passwordkinging",
+  "phone": "055343667",
   "experience": 2
 }
 

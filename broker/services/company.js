@@ -7,13 +7,12 @@ const { hashPassword, validatePasswordHash, errors} = require('../utils')
 //Register a Company
 module.exports.register = async ({name, email, password, phone}) => {
     const company = await Company.findOne({email})
-    if (company) throw createError.Conflict(`${email} already exists`)
+    if (company) throw createError.Conflict(`email already exists`)
 
-    const hashedPassword = await hashPassword(password)
     const newCompany = new Company({
         name,
         email,
-        password: hashedPassword,
+        password,
         phone
     })
     try {
@@ -28,7 +27,7 @@ module.exports.login = async ({email, password}) => {
     if (!company) throw createError.BadRequest(`${email} not registered`)
 
     const isValid = await validatePasswordHash(password, company.password)
-    if (!isValid) throw createError.BadRequest(`${password} incorrect`)
+    if (!isValid) throw createError.Unauthorized(`email/password incorrect`)
 
     return {
         status: 'success',
