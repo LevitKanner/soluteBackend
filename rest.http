@@ -1,4 +1,8 @@
 ### Get a list of all registered companies
+GET http://localhost:3000/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3MDc4ODgsImV4cCI6MTYxMjcwNzkwOCwiYXVkIjoiNjAxZDk4YmZkZmY5M2IwZjU4MWViMDJjIiwiaXNzIjoic29sdXRlLmNvbSJ9.JpJkVcWcw3nlaPSr7QQb9qpOZUUvJcGfHqzUKrHzzC0
+
+###Get a list of all registered companies 
 GET http://localhost:3000/company
 
 ### Get a single company by ID
@@ -18,9 +22,9 @@ Content-Type: application/json
 
 {
   "name": "tye",
-  "email": "again@gmail.com",
+  "email": "againt@gmail.com",
   "password":"main12335",
-  "phone": "0244567438"
+  "phone": "0545343443"
 }
 
 ### Login as a company
