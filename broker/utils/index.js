@@ -6,7 +6,7 @@ const errorHandler = require('./errorHandler')
 const errors = require('./errors')
 const { hashPassword, validatePasswordHash } = require('./password')
 
-const generateAccessToken = async (id) => {
+const generateAccessToken = (id) => {
     return new Promise((resolve, reject) => {
         const payload = {}
         const secret = process.env.ACCESS_TOKEN_SECRET
@@ -22,7 +22,7 @@ const generateAccessToken = async (id) => {
     })
 }
 
-const generateRefreshToken = async (id) => {
+const generateRefreshToken = (id) => {
     return new Promise((resolve, reject) => {
         const payload = {}
         const secret = process.env.REFRESH_TOKEN_SECRET
@@ -38,6 +38,14 @@ const generateRefreshToken = async (id) => {
     })
 }
 
+const verifyRefreshToken = (token) => {
+    return new Promise((resolve, reject) => {
+        JWT.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, payload) => {
+           return err ? reject(createError.Unauthorized()) : resolve(payload.aud)
+        })
+    })
+}
+
 
 module.exports = {
     connectDB,
@@ -46,5 +54,6 @@ module.exports = {
     errorHandler, 
     errors,
     generateAccessToken,
-    generateRefreshToken
+    generateRefreshToken,
+    verifyRefreshToken
 }
