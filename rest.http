@@ -1,12 +1,21 @@
 ### Get a list of all registered companies
 GET http://localhost:3000/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3MDc4ODgsImV4cCI6MTYxMjcwNzkwOCwiYXVkIjoiNjAxZDk4YmZkZmY5M2IwZjU4MWViMDJjIiwiaXNzIjoic29sdXRlLmNvbSJ9.JpJkVcWcw3nlaPSr7QQb9qpOZUUvJcGfHqzUKrHzzC0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3MTI2MjksImV4cCI6MTYxMjcxMjY0OSwiYXVkIjoiNjAxZDViOWM1Yzk4N2IwNmM3OWYyNWE3IiwiaXNzIjoic29sdXRlLmNvbSJ9.dPpPlYgckZdnujhC0S6VB42hS07-anHuJtSzu_t8zVY
+
+### GET new access and refresh tokens
+POST  http://localhost:3000/auth/refreshToken
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3MTQzODAsImV4cCI6MTY0NDI3MTk4MCwiYXVkIjoiNjAxZDViOWM1Yzk4N2IwNmM3OWYyNWE3IiwiaXNzIjoic29sdXRlLmNvbSJ9.26YKWn5O9YOGrnydxl2ub53l089wf470tRbSkXt9CBY"
+}
 
 ###Get a list of all registered companies 
 GET http://localhost:3000/company
 
+
 ### Get a single company by ID
-GET http://localhost:3000/company/601b75ed5decff03f2aa52af
+GET http://localhost:3000/company/601d5b9c5c987b06c79f25a7
 
 ### Update a company using ID
 PATCH http://localhost:3000/company/601b75ed5decff03f2aa52af

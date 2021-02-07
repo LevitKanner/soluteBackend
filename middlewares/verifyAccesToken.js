@@ -1,7 +1,7 @@
 const JWT = require('jsonwebtoken')
 const createError = require('http-errors')
 
-const verifyToken = (req, res, next) => {
+const verifyAccessToken = (req, res, next) => {
     if (!req.headers['authorization']) next(createError.unauthorized())
 
     const [_, token] = req.headers['authorization'].split(' ')
@@ -11,4 +11,4 @@ const verifyToken = (req, res, next) => {
     })
 }
 
-module.exports = verifyToken
+module.exports = verifyAccessToken
