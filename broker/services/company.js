@@ -29,11 +29,18 @@ module.exports.login = async ({email, password}) => {
     const isValid = await validatePasswordHash(password, company.password)
     if (!isValid) throw createError.Unauthorized(`email/password incorrect`)
 
+    const accessToken = await _broker.utils.generateAccessToken(company.id)
+    const refreshToken = await _broker.utils.generateRefreshToken(company.id)
+
     return {
         status: 'success',
         message: 'Login successful',
+        tokens: {
+            accessToken,
+            refreshToken 
+        },
         payload: {
-            user: {
+            company: {
                 ...company.toObject()
             }
         }
