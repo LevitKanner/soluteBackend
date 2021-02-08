@@ -7,7 +7,7 @@ POST  http://localhost:3000/auth/refreshToken
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3NzkwNjksImV4cCI6MTY0NDMzNjY2OSwiYXVkIjoiNjAxZDViOWM1Yzk4N2IwNmM3OWYyNWE3IiwiaXNzIjoic29sdXRlLmNvbSJ9.8oS_nh0T_AodLwCZPi2WR2kmkZHwnkVI-Otnc1DuKQo"
+  "refreshToken": ""
 }
 
 ###Get a list of all registered companies 
@@ -30,10 +30,10 @@ POST http://localhost:3000/company/register
 Content-Type: application/json
 
 {
-  "name": "tye",
-  "email": "againt@gmail.com",
-  "password":"main12335",
-  "phone": "0545343443"
+  "name": "",
+  "email": "",
+  "password":"",
+  "phone": ""
 }
 
 ### Login as a company
@@ -41,8 +41,8 @@ POST http://localhost:3000/company/login
 Content-Type: application/json
 
 {
-  "email": "TTrye@gmail.com",
-  "password":"pass123y"
+  "email": "",
+  "password":""
 }
 
 ### Delete a single company using ID
@@ -67,10 +67,10 @@ POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-  "name": "Ernest Kanner",
-  "email": "lkanner@gmail.com",
-  "password": "passwordkinging",
-  "phone": "055343667",
+  "name": "",
+  "email": "",
+  "password": "",
+  "phone": "",
   "experience": 2
 }
 
@@ -79,8 +79,8 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-  "email": "ernest@gmail.com",
-  "password": "password"
+  "email": "",
+  "password": ""
 }
 
 ###Logout
@@ -88,7 +88,7 @@ POST http://localhost:3000/auth/logout
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3OTE5MTEsImV4cCI6MTY0NDM0OTUxMSwiYXVkIjoiNjAxZDk4YmZkZmY5M2IwZjU4MWViMDJjIiwiaXNzIjoic29sdXRlLmNvbSJ9.YYlhOdQ7fg-9g-ApbekoJMl3me6wvLDgAI7nxYXiprA"
+  "refreshToken": ""
 }
 
 ### Hit unknown endpoint
