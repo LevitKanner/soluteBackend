@@ -7,7 +7,7 @@ POST  http://localhost:3000/auth/refreshToken
 Content-Type: application/json
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3NzkwNjksImV4cCI6MTY0NDMzNjY2OSwiYXVkIjoiNjAxZDViOWM1Yzk4N2IwNmM3OWYyNWE3IiwiaXNzIjoic29sdXRlLmNvbSJ9.8oS_nh0T_AodLwCZPi2WR2kmkZHwnkVI-Otnc1DuKQo"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3NzkwNjksImV4cCI6MTY0NDMzNjY2OSwiYXVkIjoiNjAxZDViOWM1Yzk4N2IwNmM3OWYyNWE3IiwiaXNzIjoic29sdXRlLmNvbSJ9.8oS_nh0T_AodLwCZPi2WR2kmkZHwnkVI-Otnc1DuKQo"
 }
 
 ###Get a list of all registered companies 
@@ -81,6 +81,14 @@ Content-Type: application/json
 {
   "email": "ernest@gmail.com",
   "password": "password"
+}
+
+###Logout
+POST http://localhost:3000/auth/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3OTE5MTEsImV4cCI6MTY0NDM0OTUxMSwiYXVkIjoiNjAxZDk4YmZkZmY5M2IwZjU4MWViMDJjIiwiaXNzIjoic29sdXRlLmNvbSJ9.YYlhOdQ7fg-9g-ApbekoJMl3me6wvLDgAI7nxYXiprA"
 }
 
 ### Hit unknown endpoint
