@@ -7,7 +7,7 @@ POST  http://localhost:3000/auth/refreshToken
 Content-Type: application/json
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3MTQzODAsImV4cCI6MTY0NDI3MTk4MCwiYXVkIjoiNjAxZDViOWM1Yzk4N2IwNmM3OWYyNWE3IiwiaXNzIjoic29sdXRlLmNvbSJ9.26YKWn5O9YOGrnydxl2ub53l089wf470tRbSkXt9CBY"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI3NzkwNjksImV4cCI6MTY0NDMzNjY2OSwiYXVkIjoiNjAxZDViOWM1Yzk4N2IwNmM3OWYyNWE3IiwiaXNzIjoic29sdXRlLmNvbSJ9.8oS_nh0T_AodLwCZPi2WR2kmkZHwnkVI-Otnc1DuKQo"
 }
 
 ###Get a list of all registered companies 
