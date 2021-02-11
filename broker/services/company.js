@@ -39,10 +39,8 @@ module.exports.login = async ({email, password}) => {
             accessToken,
             refreshToken 
         },
-        payload: {
-            company: {
-                ...company.toObject()
-            }
+        company: {
+            ...company.toObject()
         }
     }
 }
