@@ -1,4 +1,3 @@
-const mongoose = require('mongoose')
 const createError = require('http-errors')
 const error = require('./errors')
 
@@ -7,7 +6,7 @@ const errorHandler = (err, next) => {
 
     if (err.name === 'ValidationError') return next(createError.BadRequest(err.message))
 
-    if (err.name === 'ConflictError') return next(createError(400, err.message))
+    if (err.name === 'ConflictError') return next(createError.Conflict(err.message))
 
     if (err.name === 'UnauthorizedError') return next(createError.Unauthorized(err.message))
 
