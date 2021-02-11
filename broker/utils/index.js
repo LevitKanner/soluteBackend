@@ -13,7 +13,7 @@ const generateAccessToken = (id) => {
         const payload = {}
         const secret = process.env.ACCESS_TOKEN_SECRET
         options = {
-            'expiresIn': '20s',
+            'expiresIn': '3h',
             'issuer': 'solute.com',
             'audience': id
         }
@@ -37,7 +37,7 @@ const generateRefreshToken = (id) => {
         JWT.sign(payload, secret, options, (err, token) => {
             if (err) return reject(createError.Unauthorized())
 
-            redisClient.SET(id, token, (err, reply) => {
+            redisClient.SET(id, 'Ex', 365 * 24 * 60 * 60, token, (err, reply) => {
                 if (err) return reject(createError.InternalServerError())
                 return resolve(token)
             })
