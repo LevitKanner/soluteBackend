@@ -53,9 +53,9 @@ module.exports.getUserDetails = async ({id}) => {
     }
 }
 
-module.exports.allUsers = async () => {
+module.exports.allUsers = async (skip, limit) => {
     try {
-        return await User.find({})
+        return await User.find({}).skip(skip).limit(limit)
     } catch (e) {
         throw e
     }
