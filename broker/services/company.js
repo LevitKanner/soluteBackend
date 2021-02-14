@@ -62,9 +62,9 @@ module.exports.deleteCompany = async ({id}) => {
 }
 
 
-module.exports.allCompanies = async () => {
+module.exports.allCompanies = async (skip, limit) => {
     try {
-        return await Company.find()
+        return await Company.find().skip(skip).limit(limit)
     } catch (e) {
         throw e
     }
