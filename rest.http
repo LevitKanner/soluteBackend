@@ -30,10 +30,10 @@ POST http://localhost:3000/company/register
 Content-Type: application/json
 
 {
-  "name": "",
-  "email": "",
-  "password":"",
-  "phone": ""
+  "name": "solute ghana limited",
+  "email": "losei-wusu@st.ug.edu.gh",
+  "password":"pleaseworkout",
+  "phone": "0244520954"
 }
 
 ### Login as a company
@@ -46,7 +46,7 @@ Content-Type: application/json
 }
 
 ### Delete a single company using ID
-DELETE http://localhost:3000/company/601be7f18e17b1230218261c
+DELETE http://localhost:3000/company/602a6f1b3db00e18816a565a
 
 ### Get a list of all registered users
 GET http://localhost:3000/users?page=2&size=2

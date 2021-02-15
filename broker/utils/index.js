@@ -6,6 +6,7 @@ const errorHandler = require('./errorHandler')
 const errors = require('./errors')
 const { hashPassword, validatePasswordHash } = require('./password')
 const redisClient = require('./redis')
+const sendMail = require('./email')
 
 
 const generateAccessToken = (id) => {
@@ -72,5 +73,6 @@ module.exports = {
     errors,
     generateAccessToken,
     generateRefreshToken,
-    verifyRefreshToken
+    verifyRefreshToken,
+    sendMail
 }
