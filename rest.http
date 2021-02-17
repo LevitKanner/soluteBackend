@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ###Get a list of all registered companies 
-GET http://localhost:3000/company?page=1&size=5
+GET http://localhost:3000/company?page=1&size=15
 
 
 ### Get a single company by ID
@@ -46,7 +46,7 @@ Content-Type: application/json
 }
 
 ### Delete a single company using ID
-DELETE http://localhost:3000/company/602a6f1b3db00e18816a565a
+DELETE http://localhost:3000/company/602cb994a10536119aee1663
 
 ### Get a list of all registered users
 GET http://localhost:3000/users?page=2&size=2
