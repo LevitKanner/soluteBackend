@@ -14,7 +14,7 @@ module.exports = async ({ to, subject, body }) => {
         service: 'gmail',
         auth: {
             type: 'OAuth2',
-            user: 'lkanner21@gmai.com',
+            user: 'lkanner21',
             clientId: process.env.EMAIL_CLIENT_ID,
             clientSecret: process.env.EMAIL_CLIENT_SECRET,
             refreshToken: process.env.EMAIL_REFRESH_TOKEN,
@@ -23,7 +23,7 @@ module.exports = async ({ to, subject, body }) => {
     })
 
     const mailOptions = {
-        from: 'SOLUTE <noreply@gmail.com>',
+        from: 'SOLUTE',
         to,
         subject,
         text: body
