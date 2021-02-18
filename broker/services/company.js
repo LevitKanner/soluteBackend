@@ -19,12 +19,12 @@ module.exports.register = async ({name, email, password, phone}) => {
     /**
      * ! To be added as a post save event on company schema.
      */
-    sendMail({
-        to: email,
-        subject: 'Successful Registration',
-        body: 'Welcome to solute GH'
-    })
-        .then(result => console.log(result)).catch(error => console.log(`An error occurred while sending mail ${error.message}`))
+    // sendMail({
+    //     to: email,
+    //     subject: 'Successful Registration',
+    //     body: 'Welcome to solute GH'
+    // })
+    //     .then(result => console.log(result)).catch(error => console.log(`An error occurred while sending mail ${error.message}`))
     
     try {
         return await newCompany.save()
