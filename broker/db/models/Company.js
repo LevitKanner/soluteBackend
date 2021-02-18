@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const sendMail = require('../../utils/email') 
+
 const { VacancySchema } = require('./Vacancy')
 
 const CompanySchema = new mongoose.Schema({
@@ -38,6 +40,18 @@ CompanySchema.pre('save', async function (next) {
         next()
     } catch (error) {
         next(error)
+    }
+})
+
+CompanySchema.post('save', async (next) => {
+    try {
+        return await sendMail({
+            to: this.email,
+            subject: 'Successful Registration',
+            body: 'Welcome to solute GH'
+        })
+    } catch (error) {
+         next(error)
     }
 })
 
