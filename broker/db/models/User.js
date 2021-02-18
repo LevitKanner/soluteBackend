@@ -48,5 +48,17 @@ UserSchema.pre('save', async function (next) {
     }
 })
 
+UserSchema.post('save', async (next) => {
+    try {
+        return await sendMail({
+            to: this.email,
+            subject: 'Successful Registration',
+            body: 'Welcome to solute GH'
+        })
+    } catch (error) {
+         next(error)
+    }
+})
 
+UserSchema.plugin(autopopulate)
 module.exports = mongoose.model('user', UserSchema)
