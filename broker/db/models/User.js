@@ -50,11 +50,12 @@ UserSchema.pre('save', async function (next) {
 
 UserSchema.post('save', async (next) => {
     try {
-        return await sendMail({
+        await sendMail({
             to: this.email,
             subject: 'Successful Registration',
             body: 'Welcome to solute GH'
         })
+        next()
     } catch (error) {
          next(error)
     }

@@ -4,6 +4,7 @@ const logger = require('morgan');
 const createError = require('http-errors')
 const swaggerUI = require('swagger-ui-express')
 const swaggerJsDoc = require('swagger-jsdoc')
+const helmet = require('helmet');
 const cors = require('cors')
 require('dotenv').config();
 
@@ -46,6 +47,7 @@ app.use(cookieParser());
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(specs))
 app.use(cors())
 app.use(compression)
+app.use(helmet)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
