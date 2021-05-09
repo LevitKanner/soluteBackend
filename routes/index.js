@@ -17,10 +17,10 @@ router.post('/auth/refreshToken', async (req, res, next) => {
   try {
     const id = await _broker.utils.verifyRefreshToken(refreshToken)
     const accessToken = await _broker.utils.generateAccessToken(id)
-    const refreshToken = await _broker.utils.generateRefreshToken(id)
+    const token = await _broker.utils.generateRefreshToken(id)
     res.send({
       accessToken,
-      refreshToken
+      token
     })
   } catch (error) {
     next(createError.Unauthorized())
