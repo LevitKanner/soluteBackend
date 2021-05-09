@@ -1,4 +1,4 @@
-const { google } = require('googleapis')
+const {google} = require('googleapis')
 const nodemailer = require('nodemailer')
 
 const authClient = new google.auth.OAuth2(process.env.EMAIL_CLIENT_ID,
@@ -7,7 +7,7 @@ const authClient = new google.auth.OAuth2(process.env.EMAIL_CLIENT_ID,
 
 authClient.setCredentials({refresh_token: process.env.EMAIL_REFRESH_TOKEN})
 
-module.exports = async ({ to, subject, body }) => {
+module.exports = async ({to, subject, body}) => {
     const accessToken = await authClient.getAccessToken();
 
     const transport = nodemailer.createTransport({
@@ -28,10 +28,5 @@ module.exports = async ({ to, subject, body }) => {
         subject,
         text: body
     }
-    try {
-        const result = await transport.sendMail(mailOptions)
-        return result
-    } catch (error) {
-        throw error;
-    }
+    return transport.sendMail(mailOptions)
 }

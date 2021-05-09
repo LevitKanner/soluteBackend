@@ -13,14 +13,14 @@ const generateAccessToken = (id) => {
     return new Promise((resolve, reject) => {
         const payload = {}
         const secret = process.env.ACCESS_TOKEN_SECRET
-        options = {
+        const options = {
             'expiresIn': '3h',
             'issuer': 'solute.com',
             'audience': id
         }
-        JWT.sign(payload, secret, options, (err, payload) => {
+        JWT.sign(payload, secret, options, (err, result) => {
             if (err) return reject(createError.Unauthorized()) 
-            return resolve(payload)
+            return resolve(result)
         })
     })
 }
@@ -30,7 +30,7 @@ const generateRefreshToken = (id) => {
     return new Promise((resolve, reject) => {
         const payload = {}
         const secret = process.env.REFRESH_TOKEN_SECRET
-        options = {
+        const options = {
             'expiresIn': '1y',
             'issuer': 'solute.com',
             'audience': id
@@ -38,8 +38,8 @@ const generateRefreshToken = (id) => {
         JWT.sign(payload, secret, options, (err, token) => {
             if (err) return reject(createError.Unauthorized())
 
-            redisClient.SET(id, 'Ex', 365 * 24 * 60 * 60, token, (err, reply) => {
-                if (err) return reject(createError.InternalServerError())
+            redisClient.SET(id, 'Ex', 365 * 24 * 60 * 60, token, (error, reply) => {
+                if (error) return reject(createError.InternalServerError())
                 return resolve(token)
             })
             
@@ -54,8 +54,8 @@ const verifyRefreshToken = (token) => {
             
             const id  = payload.aud
             
-            redisClient.GET(id, (err, reply) => {
-                if (err) return reject(createError.InternalServerError())
+            redisClient.GET(id, (error, reply) => {
+                if (error) return reject(createError.InternalServerError())
                 if (reply !== token) return reject(createError.Unauthorized())
                 resolve(id)
             }) 
