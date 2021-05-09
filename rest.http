@@ -30,10 +30,10 @@ POST http://localhost:3000/company/register
 Content-Type: application/json
 
 {
-  "name": "solute ghana limited",
-  "email": "losei-wusu@st.ug.edu.gh",
+  "name": "appgharage limited",
+  "email": "apgharage@gmail.com",
   "password":"pleaseworkout",
-  "phone": "0244520954"
+  "phone": "0244532222"
 }
 
 ### Login as a company
@@ -49,7 +49,7 @@ Content-Type: application/json
 DELETE http://localhost:3000/company/602cb994a10536119aee1663
 
 ### Get a list of all registered users
-GET http://localhost:3000/users?page=2&size=2
+GET http://localhost:3000/users?page=1&size=20
 
 ### Get a single user by ID
 GET http://localhost:3000/users/601bfbef81adda3812712f30
@@ -67,10 +67,10 @@ POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-  "name": "",
-  "email": "",
-  "password": "",
-  "phone": "",
+  "name": "reverended",
+  "email": "reverended@gmail.com",
+  "password": "allthatneedstobedone",
+  "phone": "0244520953",
   "experience": 2
 }
 
@@ -79,8 +79,8 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-  "email": "",
-  "password": ""
+  "email": "hkanner21@gmail.com",
+  "password": "allthatneedstobedone"
 }
 
 ###Logout

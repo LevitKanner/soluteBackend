@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const autopopulate = require('mongoose-autopopulate')
+const sendMail = require('../../utils/email')
 
 const UserSchema = new mongoose.Schema({
     name: {

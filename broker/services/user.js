@@ -1,34 +1,39 @@
 const createError = require('http-errors')
+const { use } = require('passport')
 const User = require('../db/models/User')
 
 
 module.exports.login = async ({email, password}) => {
-    const user = await User.findOne({email})
-    if (!user) throw createError.Unauthorized('email/password invalid')
-    const isValid = await _broker.utils.validatePasswordHash(password, user.password)
+    try {
+        const user = await User.findOne({email})
+        if (!user) throw createError.Unauthorized('email/password invalid')
+        const isValid = await _broker.utils.validatePasswordHash(password, user.password)
 
-    if (!isValid) throw createError.Unauthorized('email/password invalid')
-    const accessToken = await _broker.utils.generateAccessToken(user.id)
-    const refreshToken = await _broker.utils.generateRefreshToken(user.id)
-    return {
-        status: 'success',
-        message: 'login successful',
-        payload: {
-            tokens: {
-                accessToken,
-                refreshToken
-            },
-            user: {
-                ...user.toObject() 
+        if (!isValid) throw createError.Unauthorized('email/password invalid')
+        const accessToken = await _broker.utils.generateAccessToken(user.id)
+        const refreshToken = await _broker.utils.generateRefreshToken(user.id)
+        return {
+            status: 'success',
+            message: 'login successful',
+            payload: {
+                tokens: {
+                    accessToken,
+                    refreshToken
+                },
+                user: {
+                    ...user.toObject()
+                }
             }
         }
+    } catch (err) {
+        throw err;
     }
 }
 
 
 module.exports.register = async ({name, email, password, phone, experience}) => {
     const user = await User.findOne({
-        $or: [{ email }, { phone }]
+        $or: [{email}, {phone}]
     })
     if (user) throw createError.Conflict('email/phone already exists')
     const newUser = new User({
@@ -64,7 +69,7 @@ module.exports.allUsers = async (skip, limit) => {
 module.exports.updateUser = async (id, args) => {
     try {
         return await User.findByIdAndUpdate(id, args, {new: true})
-    } catch (e){
+    } catch (e) {
         throw e
     }
 }

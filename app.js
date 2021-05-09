@@ -47,7 +47,7 @@ app.use(cookieParser());
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(specs))
 app.use(cors())
 app.use(compression)
-app.use(helmet)
+app.use(helmet())
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -58,9 +58,10 @@ app.use((req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-    res.status(err.status || 500).send({
+    const status = err.status || 500;
+    res.status(status).send({
         error: {
-            status: err.status || 500,
+            status: status,
             message: err.message
         }
     })
